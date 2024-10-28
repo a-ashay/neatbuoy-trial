@@ -1,37 +1,40 @@
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// Timeline for scroll-dependent animations
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".container",
-    start: "top top", 
-    end: "bottom+=200%", 
-    scrub: 1, 
-    pin: true, 
-  }
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.innerWidth <= 767;
 
-// Circle animation - moves out of viewport
-tl.to(".left-circle", {
-  x: "-80vw",
-  ease: "none", 
-});
+  const tl = gsap.timeline({
+      scrollTrigger: {
+          trigger: ".container",
+          start: "top top", 
+          end: "bottom+=200%", 
+          scrub: 1, 
+          pin: true, 
+      }
+  });
 
-tl.to(".right-circle", {
-  x: "80vw",
-  ease: "none", 
-}, "<");
+  // Circle animation - adjusted based on screen size
+  tl.to(".left-circle", {
+      x: isMobile ? "-40vw" : "-80vw",
+      ease: "none", 
+  });
 
-// Triangle animation - moves up and expands
-tl.to(".triangle", {
-  y: "-80vh", 
-  ease: "power1.out", 
-}, "<");
+  tl.to(".right-circle", {
+      x: isMobile ? "40vw" : "80vw",
+      ease: "none", 
+  }, "<");
 
-tl.to(".triangle", {
-  scale: 20, 
-  ease: "power2.inOut", 
+  // Triangle animation - adjusted based on screen size
+  tl.to(".triangle", {
+      y: isMobile ? "-40vh" : "-80vh", 
+      ease: "power1.out", 
+  }, "<");
+
+  tl.to(".triangle", {
+      scale: isMobile ? 10 : 20, 
+      ease: "power2.inOut", 
+  });
 });
 
 // Target all <p> elements inside the .other section
