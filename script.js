@@ -39,7 +39,7 @@ gsap.from(".other p", {
   opacity: 0,
   y: 20, // Optional: adds a slight upward animation
   duration: 1,
-  stagger: 2, 
+  stagger: 1.5, 
   scrollTrigger: {
     trigger: ".other",
     start: "top center", 

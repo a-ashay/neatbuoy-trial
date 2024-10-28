@@ -90,7 +90,8 @@ h1 {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 4rem;
+        font-size: 2.25rem;
+        
     }
 
     .circle-container {
@@ -109,5 +110,9 @@ h1 {
 
     .right-circle {
         margin-right: -9rem;
+    }
+
+    .other p {
+        text-align: center;
     }
 }
