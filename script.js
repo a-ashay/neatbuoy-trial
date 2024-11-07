@@ -2,40 +2,48 @@
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", () => {
-  const isMobile = window.innerWidth <= 767;
+  // Define breakpoints for responsive animations
+  gsap.matchMedia().add("(max-width: 767px)", () => {
+    // Animations specifically for mobile screens
 
-  const tl = gsap.timeline({
+    // Create the timeline with ScrollTrigger
+    const tl = gsap.timeline({
       scrollTrigger: {
-          trigger: ".container",
-          start: "top top", 
-          end: "bottom+=200%", 
-          scrub: 1, 
-          pin: true, 
+        trigger: ".container",
+        start: "top top", 
+        end: "bottom+=200%", 
+        scrub: 1, 
+        pin: true,
       }
+    });
+
+    // Adjusted animations for mobile
+    tl.to(".left-circle", { x: "-50vw", ease: "none" });
+    tl.to(".right-circle", { x: "50vw", ease: "none" }, "<");
+    tl.to(".triangle", { y: "-80vh", ease: "power1.out" }, "<");
+    tl.to(".triangle", { scale: 8, ease: "power2.inOut" }); // Mobile scale value
   });
 
-  // Circle animation - adjusted based on screen size
-  tl.to(".left-circle", {
-      x: isMobile ? "-40vw" : "-80vw",
-      ease: "none", 
-  });
+  // Default animations for screens larger than 767px
+  gsap.matchMedia().add("(min-width: 768px)", () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".container",
+        start: "top top", 
+        end: "bottom+=200%", 
+        scrub: 1, 
+        pin: true,
+      }
+    });
 
-  tl.to(".right-circle", {
-      x: isMobile ? "40vw" : "80vw",
-      ease: "none", 
-  }, "<");
-
-  // Triangle animation - adjusted based on screen size
-  tl.to(".triangle", {
-      y: isMobile ? "-40vh" : "-80vh", 
-      ease: "power1.out", 
-  }, "<");
-
-  tl.to(".triangle", {
-      scale: isMobile ? 10 : 20, 
-      ease: "power2.inOut", 
+    // Adjusted animations for larger screens
+    tl.to(".left-circle", { x: "-80vw", ease: "none" });
+    tl.to(".right-circle", { x: "80vw", ease: "none" }, "<");
+    tl.to(".triangle", { y: "-80vh", ease: "power1.out" }, "<");
+    tl.to(".triangle", { scale: 20, ease: "power2.inOut" }); // Larger screen scale value
   });
 });
+
 
 // Target all <p> elements inside the .other section
 gsap.from(".other p", {
