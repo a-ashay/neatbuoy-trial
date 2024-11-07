@@ -72,6 +72,7 @@ h1 {
     height: 24rem;
     transition: transform 0.3s;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(335deg) brightness(102%) contrast(101%);
+    transform-origin: center;
 }
 
 .other {
@@ -90,8 +91,8 @@ h1 {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2rem;
-        
+        font-size: 1.75rem;
+        width: 80vw;
     }
 
     .circle-container {
