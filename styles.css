@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    z-index: -2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: black;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-size: 6rem;
+    position: absolute;
+    top: 0;
+    margin-top: 4rem;
+    text-align: center;
+    width: 75vw;
+    animation:  typing 2s steps(16),
+                blink 0.5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+}
+
+.circle {
+    width: 12rem;
+    height: 12rem;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(335deg) brightness(102%) contrast(101%);
+}
+
+.circle-container {
+    height: 12rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.triangle {
+    position: absolute;
+    bottom: -60vh; 
+    width: 24rem;
+    height: 24rem;
+    transition: transform 0.3s;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(335deg) brightness(102%) contrast(101%);
+}
+
+.other {
+    background-color: #FFFFFF;
+    height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.other p {
+    font-size: 3rem;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        
+    }
+
+    .circle-container {
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .circle {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .left-circle {
+        margin-left: -9rem;
+    }
+
+    .right-circle {
+        margin-right: -9rem;
+    }
+
+    .other p {
+        text-align: center;
+        font-size: 2rem;
+    }
+}
